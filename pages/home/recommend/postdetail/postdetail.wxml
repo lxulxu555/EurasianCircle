@@ -1,0 +1,33 @@
+<view>
+    <Header bind:GetHeight="GetHeight" UserInfo="{{PostDetail.user}}"/>
+
+    <scroll-view class='bg-gray' style="margin-top: {{navH}}px" scroll-y>
+        <!-- 正文 -->
+        <view style="margin-top: 15px">
+            <title>
+                {{PostDetail.title}}
+            </title>
+        </view>
+        <view style="flex-direction: row;align-items: center;display: flex">
+            <image src="{{PostDetail.user.avatarUrl}}"
+                   style="width: 40px;height: 40px;border-radius: 50rpx"></image>
+            <text style="color:gray;margin-left: 15px">{{PostDetail.user.nickName}}</text>
+        </view>
+        <view style="margin-top: -20px">
+            <text style="line-height: 2;font-size: 18px">
+                {{PostDetail.content}}
+            </text>
+        </view>
+        <image src="{{item}}" bindtap="LookImages" wx:for="{{images}}" wx:key="*this"
+               data-images="{{images}}" data-image="{{item}}"></image>
+
+        <!--留言评论组件-->
+            <Comment
+                    commentList="{{PostDetail.commentList}}"
+                    postId="{{PostDetail.id}}"
+                    bind:UpdateComment="getPostDetail"
+            />
+
+
+    </scroll-view>
+</view>

@@ -1,0 +1,79 @@
+<view class="comment">
+    <view style="display: flex;flex-direction: row">
+        <text style="font-weight: bold">全部回复</text>
+        <view style="flex:1"/>
+        <view
+                style="display: flex;flex-direction: row;color: #1e90ff"
+                bindtap="ClickSort"
+        >
+            <view class="iconfont icon-paixushengxu"/>
+            <text>{{title}}</text>
+        </view>
+    </view>
+
+    <!--没有评论-->
+    <view style="display:flex;flex-direction: column" wx:if="{{commentList.length === 0}}">
+        <NoComment class="iconfont icon-meiyoupinglun"/>
+        <NoTitle>成为第一个评论的人吧</NoTitle>
+    </view>
+
+    <!--有评论-->
+    <view style="display: flex;flex-direction: row;margin-top: 15px" wx:for="{{commentList}}" wx:key="*this">
+        <view>
+            <image src="{{item.user.avatarUrl}}"
+                   style="width: 40px;height: 40px;border-radius: 50rpx"></image>
+        </view>
+
+        <view style="display: flex;flex-direction: column;margin:5px 0 0 10px;width: 100%" bindtap="GoToCommentDetail" data-comment="{{item}}">
+            <text style="font-size: 14px;font-weight: bold">{{item.user.nickName}}</text>
+            <text>{{item.createTime}}</text>
+            <view>
+                {{item.content}}
+            </view>
+
+            <!--回复-->
+            <view style="background-color: rgb(238,240,244);margin-top: 5px;padding-left: 10px"  >
+                <view wx:for="{{item.replyList}}" wx:for-item="reply" wx:if="{{index<2}}" style="margin-bottom: 5px" wx:key="*this">
+                    <text style="color: #1e90ff;font-size: 13px">{{reply.user.nickName}}：</text>
+                    {{reply.content}}
+                </view>
+                <view wx:if="{{item.replyList.length > 1}}" style="color: #1e90ff">
+                    共{{item.replyList.length}}回复
+                </view>
+            </view>
+        </view>
+
+        <view style="flex: 1"/>
+        <view
+                class="iconfont icon-dianzan"
+                bindtap="like"
+                style="font-size: 20px"
+        />
+    </view>
+
+
+    <!-- 底部悬浮,使用绝对定位fixed -->
+    <view class="suspendV" wx:if="{{ShowInput === false}}">
+        <button open-type="share" class="iconfont icon-fenxiang_2">
+            分享
+        </button>
+        <view class="iconfont icon-pinglun" bindtap="ShowInput">
+            评论
+        </view>
+        <view
+                style="color:{{clickcolor}}"
+                class="iconfont icon-dianzan"
+                bindtap="like"
+        >
+            点赞
+        </view>
+    </view>
+
+    <CommentInput
+            wx:else
+            postId="{{postId}}"
+            bind:SendFather="SendGrandFather"
+            bind:SendShowInput="HideInput"
+    />
+
+</view>

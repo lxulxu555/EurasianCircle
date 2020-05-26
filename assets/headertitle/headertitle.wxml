@@ -1,0 +1,11 @@
+<view class='nav' style='height:{{navH}}px'>
+    <view class='title_icon'>
+        <leftimage class="iconfont icon-fanhui" bindtap='navBack'></leftimage>
+        <view></view>
+        <leftimage class="iconfont icon-home" bindtap='navHome'></leftimage>
+    </view>
+    <view class='title_text'>
+        <image src="{{UserInfo.avatarUrl}}" style="width: 30px;height: 30px;border-radius: 15px;vertical-align: middle;"/>
+        {{UserInfo.nickName}}
+    </view>
+</view>

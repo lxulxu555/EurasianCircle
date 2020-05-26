@@ -1,0 +1,21 @@
+.TopUser {
+  display: flex;
+  flex-direction: row;
+  background-color: #36b7ab;
+  height: 150px;
+  align-items: center;
+}
+
+.avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 100rpx;
+  overflow: hidden;
+  margin-left: 20px;
+}
+
+.username{
+  margin-left: 20px;
+  color: #FFFFFF;
+}
+

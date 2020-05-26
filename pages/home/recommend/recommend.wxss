@@ -1,0 +1,94 @@
+.lunbo{
+  width:100%;
+  height:180px
+}
+.lunbo image{
+  width: 100%;
+}
+.OneClassImage{
+  width:40px;
+  height:40px;
+  border-style: solid;
+  border-radius: 20px;
+  border-width: 1px;
+  border-color:rosybrown;
+}
+.OneRowFlex{
+  display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.OneColumnFlex{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  width: 25%; /* 每行4个 */
+  align-items: center
+}
+.OneClassTitle{
+  margin-top: 5px;
+  font-size: 14px
+}
+.Hot{
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px
+}
+.HotDetail{
+  display: flex;
+  flex-direction: row;
+  margin-top: 5px;
+  flex-wrap: wrap;
+}
+.HotDetail image{
+  width:80px;
+  height:50px;
+}
+.HotDetail detail{
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+.HotDetail detail number{
+  font-size: 12px;
+  color: gray;
+  margin-top: 5px
+}
+.HotDetail view{
+  display: flex;
+  flex-direction: row;
+  width:50%;
+  margin-top: 10px
+}
+.line-limit-length {
+  max-width: 100px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+.Post detail {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-bottom: 10px
+}
+.Post detail view-left{
+  display: flex;
+  flex-direction: column;
+}
+.Post detail text{
+  font-weight: bold;
+  margin-top: 5px
+}
+.Post detail image{
+  height: 80px;
+  width:80px;
+  margin-right: 15px
+}
+.Post line{
+ display: flex;
+ background: gainsboro;
+ width: 100%;
+ height: 1rpx;
+}

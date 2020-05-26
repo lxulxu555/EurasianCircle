@@ -1,0 +1,54 @@
+<Header bind:GetHeight="GetHeight"/>
+<scroll-view class='bg-gray' style="margin-top: {{navH}}px" scroll-y>
+    <form bindtap="searchSubmit">
+        <mp-searchbar
+                placeholder="输入关键词搜索"
+                bind:searchDetail="selectResult"
+        />
+    </form>
+    <view style="background-color: #ffffff;margin-top: 2px;padding:5px 20px 0 20px">
+        <user class="user">
+            <image src="../../../../assets/image/Young.jpg" class="avatar"/>
+            <text class="title">理智詹密-</text>
+        </user>
+        <detail>
+            我不看好的球员和我看好的球员
+            我不看好的球员：
+            塔图姆（极度不看好现在的塔图姆，要知道，2000万的时候我是坚定的塔寨人，现在我已经叛变到天神殿和西厂了）
+            米切尔
+            保罗乔治
+            装神（装神在不远的将来必被削弱）
+            霸王龙柯林斯
+            戈登
+            菜恩（看好菜恩是从现实来说的，我看了菜恩每一场球，菜恩只要不受伤，妥妥的超级巨星）
+            我看好的球员：
+            艾顿（天神必涨）
+            西蒙斯（西帝必涨）
+            特雷杨（涨价概率很大）
+            东契奇（稳步提升）
+            雷迪十（有机会成为下一个乔治）
+            小加仑
+            报班（报班是永远的神）
+            james wiseman （明年选秀大热，模板张伯伦，216cm，运动能力出众，球风劲爆）
+        </detail>
+        <scroll-view scroll-x>
+            <imagewall style="flex-direction: row;display: flex">
+                <!--图片描述-->
+                <view wx:for="{{images}}" wx:key="*this">
+                    <image src="{{item}}" class="imagewall" bindtap="LookImages"
+                           data-images="{{images}}" data-image="{{item}}"></image>
+                </view>
+            </imagewall>
+        </scroll-view>
+        <bottom style="flex-direction: row;display: flex;align-items: center">
+            <button open-type="share" class="iconfont icon-share">123</button>
+            <view class="iconfont icon-pinglun">101</view>
+            <view style="flex: 1"/>
+            <view
+                    class="iconfont icon-dianzan"
+            >
+                12
+            </view>
+        </bottom>
+    </view>
+</scroll-view>

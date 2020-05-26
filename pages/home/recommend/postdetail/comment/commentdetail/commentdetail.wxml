@@ -1,0 +1,57 @@
+<scroll-view class="commentdetail" style="height:{{height}}px">
+    <top>
+        <view>
+            <image src="{{CommentList.user.avatarUrl}}"
+                   style="width: 40px;height: 40px;border-radius: 50rpx"></image>
+        </view>
+
+        <view style="display: flex;flex-direction: column;margin-left:10px;width: 100%">
+            <text style="font-size: 14px;font-weight: bold">{{CommentList.user.nickName}}</text>
+            <text style="font-size: 12px;color: gray">{{CommentList.createTime}}</text>
+            <view style="margin-top: 10px">
+                <text>{{CommentList.content}}</text>
+            </view>
+        </view>
+
+        <view style="flex: 1"/>
+        <view
+                class="iconfont icon-dianzan"
+                bindtap="like"
+                style="font-size: 20px;margin-right: 10px"
+        />
+    </top>
+
+    <!--回复-->
+    <view style="margin-left: 15px">
+        <view
+                wx:for="{{CommentList.replyList}}"
+                wx:for-item="node"
+                style="margin-top: 10px;"
+                wx:key="*this"
+        >
+            <view style="display: flex;flex-direction: row;">
+                <view>
+                    <image src="{{node.user.avatarUrl}}"
+                           style="width: 40px;height: 40px;border-radius: 50rpx"></image>
+                </view>
+
+                <view style="display: flex;flex-direction: column;margin-left:10px;width: 100%">
+                    <text style="font-size: 14px;font-weight: bold">{{node.user.nickName}}</text>
+                    <text style="font-size: 12px;color: gray">{{node.createTime}}</text>
+                    <view style="margin-top: 10px">
+                        {{node.content}}
+                    </view>
+                </view>
+                <view style="flex: 1"/>
+                <view
+                        class="iconfont icon-dianzan"
+                        bindtap="like"
+                        style="font-size: 20px;margin-right: 10px"
+                />
+            </view>
+            <tree wx:for="{{node.replyList}}" node="{{item}}"></tree>
+        </view>
+    </view>
+
+
+</scroll-view>

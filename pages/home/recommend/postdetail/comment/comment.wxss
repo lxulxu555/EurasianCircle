@@ -1,0 +1,42 @@
+@import "/iconfont.wxss";
+
+.comment {
+    margin-top: 10px;
+    margin-bottom: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.comment NoComment {
+    font-size: 150px;
+    text-align: center;
+}
+
+.comment NoTitle {
+    color: gray;
+    text-align: center;
+    margin-top: -50px;
+}
+/* 底部悬浮 */
+.suspendV {
+    height: 100rpx;
+    background-color: white;
+    box-shadow:4px 5px 6px 7px rgba(206, 199, 199, 0.5);
+    display: flex;
+    align-items: center;
+    position: fixed;
+    left: 0rpx;
+    right: 0rpx;
+    bottom: 0rpx;
+}
+
+.suspendV view {
+    flex: 1;
+    text-align: center;
+}
+.suspendV button{
+    background-color: inherit;
+    flex: 1;
+}
+
+button::after{ border: none; }

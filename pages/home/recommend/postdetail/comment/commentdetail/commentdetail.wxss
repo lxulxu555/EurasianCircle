@@ -1,0 +1,10 @@
+.commentdetail{
+    background-color: rgb(238,240,244);
+}
+.commentdetail top {
+    display: flex;
+    flex-direction: row;
+    background-color: #FFFFFF;
+    padding-left: 10px;
+    padding-bottom: 20px;
+}

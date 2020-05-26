@@ -1,0 +1,11 @@
+<view class="suspendV">
+    <input
+            focus
+            bindblur="HideInput"
+            bindinput = "GetInputValue"
+    />
+
+    <view>
+        <button class="sendButton" bindtap="sendComment">发送</button>
+    </view>
+</view>

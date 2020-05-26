@@ -1,0 +1,23 @@
+.bg-gray{
+    background-color: #FFFFFF;
+    width: auto;
+    margin : 0 15px 0 15px
+}
+.overflow{
+    overflow: auto;
+}
+.hidden{
+    overflow: hidden;
+}
+
+.bg-gray title {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.bg-gray image {
+    width: 100%;
+    margin-top: 10px;
+}
+
+

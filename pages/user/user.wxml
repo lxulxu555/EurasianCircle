@@ -1,0 +1,8 @@
+
+
+<view>
+  <TopUser class="TopUser">
+    <open-data type="userAvatarUrl" class="avatar" />
+    <open-data type="userNickName" class="username" />
+  </TopUser>
+</view>

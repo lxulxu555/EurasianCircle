@@ -1,0 +1,45 @@
+.bg-gray {
+    background-color: rgb(238,240,244);
+    width: auto;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50rpx;
+}
+
+.user {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    margin: 10px 0 5px 0;
+}
+
+.title {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+
+.bg-gray detail {
+    font-size: 17px;
+    margin-top: 10px;
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /*限制在一个块元素显示的文本的行数*/
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.bg-gray button {
+    background-color: inherit;
+}
+
+.imagewall{
+    height: 120px;
+    width: 150px;
+    margin: 5px 10px 0 0;
+}
+
+button::after{ border: none; }

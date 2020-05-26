@@ -1,0 +1,11 @@
+{
+  "component": true,
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+    "tree": "../treeItem/treeItem"
+  }
+}
