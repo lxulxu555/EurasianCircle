@@ -3,9 +3,12 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
   },
   "usingComponents": {
-    "tree": "../treeItem/treeItem"
+    "tree": "../treeItem/treeItem",
+    "CommentInput" : "../../../../assets/input/input"
   }
+
 }

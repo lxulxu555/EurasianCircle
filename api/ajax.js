@@ -7,7 +7,7 @@ const http = ({url = '', param = {}, ...other} = {}) => {
     });
     let timeStart = Date.now();
     return new Promise( (resolve, reject) => {
-        const token = util.getUserInfo()
+        const token = util.getUserInfo().token
         wx.request({
             url: getUrl(url),
             data: param,

@@ -1,2 +1,50 @@
 /* treeItem/treeItem.wxss */
 @import "/iconfont.wxss";
+
+.content like{
+    display: flex;
+    flex-direction: row;
+}
+
+.content like text{
+    font-size: 14px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+/* 底部悬浮 */
+.suspendV {
+    height: 100rpx;
+    background-color: white;
+    box-shadow:4px 5px 6px 7px rgba(206, 199, 199, 0.5);
+    display: flex;
+    align-items: center;
+    position: fixed;
+    left: 0rpx;
+    right: 0rpx;
+    bottom: 0rpx;
+}
+
+.suspendV input{
+    background-color: rgb(238,240,244);
+    border-radius: 30px;
+    width: 75%;
+    height: 80rpx;
+    padding-left: 10px;
+    margin-left: 10px;
+}
+
+.suspendV view {
+    height: 30px;
+    margin: 5px;
+}
+
+.sendButton{
+    color: #FFFFFF;
+    background-color: #36B7AB;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 100rpx;
+    font-size:15px;
+}
+
+button::after{ border: none; }

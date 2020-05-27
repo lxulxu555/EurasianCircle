@@ -1,6 +1,7 @@
 {
     "component": true,
     "usingComponents": {
-        "tree": "./treeItem"
+        "tree": "./treeItem",
+        "CommentInput" : "../../../../assets/input/input"
     }
 }

@@ -2,7 +2,7 @@ const getUserInfo = () => {
     try {
         var value = wx.getStorageSync('User')
         if (value) {
-            return value.token
+            return value
         }
     } catch (e) {
         // Do something when catch error

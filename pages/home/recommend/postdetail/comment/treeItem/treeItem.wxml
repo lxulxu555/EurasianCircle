@@ -1,6 +1,6 @@
 <!--回复-->
-<view style="margin-top: 10px">
-        <view style="display: flex;flex-direction: row;">
+<view style="margin-top: 10px" class="content" wx:for="{{ReplyList}}"  wx:for-item="node">
+        <view style="display: flex;flex-direction: row;" >
             <view>
                 <image src="{{node.user.avatarUrl}}"
                        style="width: 40px;height: 40px;border-radius: 50rpx"></image>
@@ -9,16 +9,45 @@
             <view style="display: flex;flex-direction: column;margin-left:10px;width: 100%">
                 <text style="font-size: 14px;font-weight: bold">{{node.user.nickName}} 回复 {{node.parentName}}</text>
                 <text style="font-size: 12px;color: gray">{{node.createTime}}</text>
-                <view style="margin-top: 10px">
+                <view style="margin-top: 10px" bindtap="ShowInput"  data-comment="{{node}}">
                     {{node.content}}
                 </view>
             </view>
             <view style="flex: 1"/>
-            <view
+
+            <like
                     class="iconfont icon-dianzan"
                     bindtap="like"
-                    style="font-size: 20px;margin-right: 10px"
-            />
+                    style="font-size: 20px;margin-right: 10px;color:red"
+                    wx:if="{{node.state === 'true'}}"
+                    data-like="{{node}}"
+                    data-index="{{index}}"
+            >
+                <text>{{node.number}}</text>
+            </like>
+
+            <like
+                    class="iconfont icon-dianzan"
+                    bindtap="like"
+                    style="font-size: 20px;margin-right: 10px;color:black"
+                    wx:if="{{node.state === 'false'}}"
+                    data-like="{{node}}"
+                    data-index="{{index}}"
+            >
+                <text>{{node.number}}</text>
+            </like>
         </view>
-        <tree wx:for="{{node.replyList}}" node="{{item}}"></tree>
+
+    <tree
+            id="tree"
+            ReplyList="{{node.replyList}}"
+    />
+
 </view>
+
+<CommentInput
+        wx:if="{{ShowInput === true}}"
+        type="reply"
+        childrenComment="{{childrenComment}}"
+        bind:UpdateNewComment="onPullDownRefresh"
+/>

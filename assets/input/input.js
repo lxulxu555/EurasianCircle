@@ -1,3 +1,4 @@
+import util from "../../utils/util";
 const api = require('../../api/ajax')
 Component({
     /**
@@ -6,6 +7,12 @@ Component({
     properties: {
         postId: {
             type:Number,
+        },
+        type:{
+            type:String
+        },
+        childrenComment:{
+            type : Object
         }
     },
 
@@ -14,7 +21,7 @@ Component({
      */
     data: {
         commentValue : '',
-        ShowInput : ''
+        ShowInput : '',
     },
 
     /**
@@ -27,20 +34,32 @@ Component({
             })
         },
 
-        sendComment : function(){
-            const content = this.data.commentValue.value
-            const postId = this.data.postId
-            api._post("/comment",{postId,content}).then(res => {
-                this.triggerEvent("SendFather")
-            })
-        },
-
-        HideInput :function(e){
+        SendHideInput : function(){
             setTimeout(() => {
-                this.triggerEvent("SendShowInput",false)
+                this.triggerEvent('SendHideInput')
             },100)
         },
 
-
+        sendComment : function(){
+            let pages = getCurrentPages();  // 获取当前页面栈
+            let prevPage = pages[pages.length - 2]; // -2 就是你上一页的数据 你上上页的数据就是-3 了以此类推！
+            const nameId = util.getUserInfo().user.id
+            const type = this.properties.type === 'reply' ? 'reply' : 'comment'   //判断留言还是回复
+            const childrenComment = this.properties.childrenComment
+            const content = this.data.commentValue.value
+            const postId = type ===  'reply' ? childrenComment.postId : this.data.postId   //帖子id
+            if(type === 'reply'){
+                const parentName = childrenComment.user.nickName
+                const commentId = childrenComment.commentId
+                const leaf = childrenComment.leaf === null ? 0 : childrenComment.id
+                api._post("/reply",{content,commentId,postId,nameId,leaf,parentName}).then(res => {
+                    prevPage.getPostDetail()
+                })
+            }else{
+                api._post("/comment", {postId, content}).then(res => {
+                    pages[pages.length - 1].getPostDetail()
+                })
+            }
+        },
     }
 })

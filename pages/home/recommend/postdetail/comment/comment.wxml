@@ -44,11 +44,26 @@
         </view>
 
         <view style="flex: 1"/>
-        <view
+        <like
                 class="iconfont icon-dianzan"
                 bindtap="like"
-                style="font-size: 20px"
-        />
+                style="font-size: 20px;color:black"
+                wx:if="{{item.state === 'false'}}"
+                data-like="{{item}}"
+                data-index="{{index}}"
+        >
+            <text>{{item.number}}</text>
+        </like>
+        <like
+                class="iconfont icon-dianzan"
+                bindtap="like"
+                style="font-size: 20px;color:red"
+                wx:if="{{item.state === 'true'}}"
+                data-like="{{item}}"
+                data-index="{{index}}"
+        >
+            <text>{{item.number}}</text>
+        </like>
     </view>
 
 
@@ -60,6 +75,7 @@
         <view class="iconfont icon-pinglun" bindtap="ShowInput">
             评论
         </view>
+
         <view
                 style="color:{{clickcolor}}"
                 class="iconfont icon-dianzan"
@@ -72,8 +88,7 @@
     <CommentInput
             wx:else
             postId="{{postId}}"
-            bind:SendFather="SendGrandFather"
-            bind:SendShowInput="HideInput"
+            bind:SendHideInput="HideInput"
     />
 
 </view>

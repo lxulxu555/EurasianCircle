@@ -39,4 +39,17 @@
     flex: 1;
 }
 
+.comment like{
+    display: flex;
+    flex-direction: row;
+}
+
+.comment like text{
+    font-size: 14px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+
+
 button::after{ border: none; }

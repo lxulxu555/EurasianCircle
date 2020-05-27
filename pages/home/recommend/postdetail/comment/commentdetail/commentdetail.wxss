@@ -8,3 +8,13 @@
     padding-left: 10px;
     padding-bottom: 20px;
 }
+.commentdetail like{
+     display: flex;
+     flex-direction: row;
+ }
+
+.commentdetail like text{
+    font-size: 14px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
