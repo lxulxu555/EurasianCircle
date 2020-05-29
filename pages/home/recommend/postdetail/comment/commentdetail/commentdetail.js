@@ -1,9 +1,12 @@
+import util from "../../../../../../utils/util";
+
 const api = require('../../../../../../api/ajax.js')
 Page({
     data: {
         CommentList: {},
         height: '',
-        ReplyList:[]
+        ReplyList: [],
+        UserId:util.getUserInfo().user.id
     },
 
     getCommentList: function () {
@@ -15,11 +18,24 @@ Page({
             })
             this.setData({
                 CommentList: data,
-                ReplyList:data.replyList
+                ReplyList: data.replyList
             })
         })
     },
 
+    onPullDown: function () {
+        wx.showNavigationBarLoading()
+        const id = this.data.CommentList.commentId
+        api._get("/comment", {id}).then(res => {
+            this.setData({
+                ReplyList: res.data.replyList
+            })
+        })
+        setTimeout(() => {
+            wx.hideNavigationBarLoading()
+            wx.stopPullDownRefresh()
+        }, 2000);
+    },
 
     like: function (e) {
         const detail = e.currentTarget.dataset.like
@@ -31,12 +47,17 @@ Page({
         const number = detail.state === 'true' ? --detail.number : ++detail.number
         api._post("/praise", {type, state}).then(() => {
             this.setData({
-                ReplyList: ReplyList.map((item, idx) => idx === index ? {...item, state: Boolean,number:number} : item)
+                ReplyList: ReplyList.map((item, idx) => idx === index ? {
+                    ...item,
+                    state: Boolean,
+                    number: number
+                } : item)
             })
         })
     },
 
-    ShowInput:function(e){
+
+    ShowInput: function (e) {
         this.tree = this.selectComponent("#tree")
         this.tree.ShowInput(e)
     },

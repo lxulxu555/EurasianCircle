@@ -4,6 +4,8 @@
             focus
             bindinput = "GetInputValue"
             bindblur="SendHideInput"
+            placeholder="回复 {{comment.user.nickName}}"
+            value="{{commentValue}}"
     />
 
     <view>

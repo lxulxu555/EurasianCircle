@@ -20,9 +20,9 @@
                 wx:for="{{ReplyList}}"
                 wx:for-item="node"
                 style="margin-top: 10px;"
-                wx:key="*this"
+                wx:key="{{index}}"
         >
-            <view style="display: flex;flex-direction: row;">
+            <view style="display: flex;flex-direction: row;" bindtap="ShowInput" data-comment="{{node}}">
                 <view>
                     <image src="{{node.user.avatarUrl}}"
                            style="width: 40px;height: 40px;border-radius: 50rpx"></image>
@@ -31,7 +31,7 @@
                 <view style="display: flex;flex-direction: column;margin-left:10px;width: 100%">
                     <text style="font-size: 14px;font-weight: bold">{{node.user.nickName}}</text>
                     <text style="font-size: 12px;color: gray">{{node.createTime}}</text>
-                    <view style="margin-top: 10px"  bindtap="ShowInput" data-comment="{{node}}">
+                    <view style="margin-top: 10px"  >
                         {{node.content}}
                     </view>
                 </view>
@@ -57,9 +57,11 @@
                     <text>{{node.number}}</text>
                 </like>
             </view>
+
             <tree
                     id="tree"
                     ReplyList="{{node.replyList}}"
+                    bind:UpdateGrandrNewComment="onPullDown"
             />
 
         </view>
@@ -68,7 +70,7 @@
 
     <tree
             id="tree"
-            ReplyList="{{node.replyList}}"
+            bind:UpdateGrandrNewComment="onPullDown"
     />
 
 </scroll-view>

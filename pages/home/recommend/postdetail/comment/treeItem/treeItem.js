@@ -24,22 +24,21 @@ Component({
 
         //下拉刷新
         onPullDownRefresh: function () {
-            wx.showNavigationBarLoading()
-            console.log(this.data.CommentList)
-            setTimeout(() => {
-                wx.hideNavigationBarLoading()
-                wx.stopPullDownRefresh()
-            }, 2000);
+            this.triggerEvent("UpdateGrandrNewComment")
+        },
+
+
+        HideInput : function(e){
+          this.setData({ShowInput:false})
         },
 
 
         ShowInput: function (e) {
             this.setData({
                 ShowInput: true,
-                childrenComment: e.currentTarget.dataset.comment
             })
-            console.log('e.currentTarget.dataset.comment',e.currentTarget.dataset.comment)
-            console.log('this.data.ShowInput',this.data.ShowInput)
+            this.Input = this.selectComponent("#Input")
+            this.Input.SaveComment(e.currentTarget.dataset.comment)
         },
 
         like: function (e) {

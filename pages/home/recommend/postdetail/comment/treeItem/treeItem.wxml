@@ -1,6 +1,7 @@
 <!--回复-->
+<view>
 <view style="margin-top: 10px" class="content" wx:for="{{ReplyList}}"  wx:for-item="node">
-        <view style="display: flex;flex-direction: row;" >
+        <view style="display: flex;flex-direction: row;" bindtap="ShowInput"  data-comment="{{node}}" >
             <view>
                 <image src="{{node.user.avatarUrl}}"
                        style="width: 40px;height: 40px;border-radius: 50rpx"></image>
@@ -9,7 +10,7 @@
             <view style="display: flex;flex-direction: column;margin-left:10px;width: 100%">
                 <text style="font-size: 14px;font-weight: bold">{{node.user.nickName}} 回复 {{node.parentName}}</text>
                 <text style="font-size: 12px;color: gray">{{node.createTime}}</text>
-                <view style="margin-top: 10px" bindtap="ShowInput"  data-comment="{{node}}">
+                <view style="margin-top: 10px" >
                     {{node.content}}
                 </view>
             </view>
@@ -43,11 +44,15 @@
             ReplyList="{{node.replyList}}"
     />
 
+
+</view>
+
 </view>
 
 <CommentInput
+        id="Input"
         wx:if="{{ShowInput === true}}"
         type="reply"
-        childrenComment="{{childrenComment}}"
-        bind:UpdateNewComment="onPullDownRefresh"
+        bind:UpdateFatherNewComment="onPullDownRefresh"
+        bind:SendHideInput="HideInput"
 />

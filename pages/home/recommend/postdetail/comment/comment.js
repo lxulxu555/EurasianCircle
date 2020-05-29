@@ -1,9 +1,12 @@
+import util from "../../../../../utils/util";
+
 const api = require('../../../../../api/ajax.js')
 Component({
     data: {
         title: '按热度',
         clicklike: false,
         ShowInput: false,
+        UserId: util.getUserInfo().user.id
     },
 
     properties: {

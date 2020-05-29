@@ -44,6 +44,11 @@
         </view>
 
         <view style="flex: 1"/>
+        <DeleteComment
+                wx:if="{{UserId === item.user.id}}"
+                comment="{{item}}"
+                type="CommentHome"
+        />
         <like
                 class="iconfont icon-dianzan"
                 bindtap="like"

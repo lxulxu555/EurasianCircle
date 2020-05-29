@@ -65,7 +65,7 @@ const _delete = (url, param = {}) => {
     return http({
         url,
         param,
-        method: 'put'
+        method: 'delete'
     })
 }
 module.exports = {

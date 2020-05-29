@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "CommentInput": "../../../assets/input/input"
+    "CommentInput": "../../../assets/input/input",
+    "DeleteComment" : "../../../assets/deletecomment/deletecomment"
   }
 }
