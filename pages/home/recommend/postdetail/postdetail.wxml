@@ -23,9 +23,9 @@
 
         <!--留言评论组件-->
             <Comment
-                    commentList="{{PostDetail.commentList}}"
+                    commentList="{{commentList}}"
                     postId="{{PostDetail.id}}"
-                    bind:UpdateComment="getPostDetail"
+                    LikeType="{{PostDetail.status}}"
             />
 
 

@@ -80,11 +80,10 @@
         <view class="iconfont icon-pinglun" bindtap="ShowInput">
             评论
         </view>
-
         <view
-                style="color:{{clickcolor}}"
+                style="color:{{color}}"
                 class="iconfont icon-dianzan"
-                bindtap="like"
+                bindtap="likeComment"
         >
             点赞
         </view>

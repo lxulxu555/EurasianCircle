@@ -1,19 +1,22 @@
 const baseUrl = 'https://eurasia.plus/ring';
-import util from '../utils/util'
+const utils =  require('../utils/util')
+let token
 
 const http = ({url = '', param = {}, ...other} = {}) => {
     wx.showLoading({
         title: '请求中，请耐心等待..'
     });
+    if(url !== '/user/login'){
+        token = utils.getUserInfo().token
+    }
     let timeStart = Date.now();
     return new Promise( (resolve, reject) => {
-        const token = util.getUserInfo().token
         wx.request({
             url: getUrl(url),
             data: param,
             header: {
-                "accept": "*/*",
                 "content-type": "application/json",
+                "accept": "*/*",
                 "token" : 'Bearer ' + token
             },
             ...other,

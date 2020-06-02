@@ -55,13 +55,15 @@ Component({
                 const parentName = comment.user.nickName
                 const commentId = comment.commentId
                 const leaf = comment.leaf === null ? 0 : comment.id
+                console.log('comment',comment)
+                console.log('leaf',leaf)
                 api._post("/reply", {content, commentId, postId, nameId, leaf, parentName}).then(res => {
-                    prevPage.getPostDetail()
+                    prevPage.UpdateCommentDetail()
                     this.triggerEvent("UpdateFatherNewComment")
                 })
             } else {
                 api._post("/comment", {postId, content}).then(res => {
-                    pages[pages.length - 1].getPostDetail()
+                    pages[pages.length - 1].UpdateCommentDetail()
                 })
             }
             this.setData({commentValue: ''})

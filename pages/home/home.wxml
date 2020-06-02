@@ -1,4 +1,4 @@
-<view wx:if="{{isHide}}">
+<view wx:if="{{isHide === true}}">
   <view class='header'>
     <view class="iconfont icon-weixindenglu" style="font-size:70px" />
   </view>
@@ -14,7 +14,7 @@
 </view>
 
 <!--选项卡-->
-<view  wx:else>
+<view wx:if="{{isHide === false}}">
 <view class='title'>
   <view class="{{0 == currentIndex ? 'title-sel-selected' : 'title-sel'}}" bindtap='titleClick' data-idx='0'>
     <text>关注</text>
@@ -40,7 +40,7 @@
       </scroll-view>
     </swiper-item>
 
-    <swiper-item>
+    <swiper-item  wx:if="{{isHide === false}}">
       <scroll-view class="scroll" scroll-y wx:if="{{currentIndex == 1}}">
         <recommend/>
       </scroll-view>

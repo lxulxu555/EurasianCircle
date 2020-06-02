@@ -1,5 +1,7 @@
 // treeItem/treeItem.js
 
+import util from "../../../../../../utils/util";
+
 const api = require('../../../../../../api/ajax.js')
 Component({
     /**
@@ -15,6 +17,7 @@ Component({
     data: {
         ShowInput: false,
         childrenComment: {},
+        UserId:""
     },
 
     /**
@@ -60,4 +63,11 @@ Component({
             })
         },
     },
+
+    ready:function () {
+        const UserId = util.getUserInfo().user.id
+        this.setData({
+            UserId
+        })
+    }
 })

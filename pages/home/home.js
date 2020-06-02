@@ -8,18 +8,20 @@ Page({
     data: {
         currentIndex: 1,
         ch: 0,
-        isHide: false
+        isHide: ''
     },
 
     isGetSetting: function () {
         let that = this
         //获取用户的当前设置
-        wx.getSetting({
+            wx.getSetting({
             success: function (res) {
                 if (res.authSetting['scope.userInfo']) {
+                    // 已经授权，可以直接调用 getUserInfo 获取头像昵称
                     wx.checkSession({
                         success () {
                             console.log('//session_key 未过期，并且在本生命周期一直有效\n')
+                            that.setData({isHide:false})
                         },
                         fail () {
                             wx.getUserInfo({
@@ -66,7 +68,12 @@ Page({
                 }).then(res => {
                     wx.setStorage({
                         key: "User",
-                        data: res.data
+                        data: res.data,
+                        success : (res) =>{
+                            this.setData({
+                                isHide: false
+                            });
+                        }
                     })
                 })
             }
@@ -78,9 +85,6 @@ Page({
             //用户按了允许授权按钮
             var that = this;
             //授权成功后,通过改变 isHide 的值，让实现页面显示出来，把授权页面隐藏起来
-            that.setData({
-                isHide: false
-            });
             that.isGetSetting()
         } else {
             //用户按了拒绝按钮

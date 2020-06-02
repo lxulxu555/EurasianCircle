@@ -1,9 +1,10 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/user/user",
+    "pages/user/myuser/myuser",
     "pages/home/recommend/postdetail/postdetail",
     "pages/home/recommend/oneclassdetail/oneclassdetail",
-    "pages/user/user",
     "pages/logs/logs",
     "pages/home/recommend/postdetail/comment/commentdetail/commentdetail"
   ],

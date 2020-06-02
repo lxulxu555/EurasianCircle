@@ -1,8 +1,26 @@
+<view style="background-color: rgb(238,240,244);height: {{height}}px">
+    <TopUser class="TopUser">
+        <open-data type="userAvatarUrl" class="avatar"/>
+        <view style="display: flex;flex-direction: column">
+            <open-data type="userNickName" class="username"/>
+            <text bindtap="GoMyUser">个人中心</text>
+        </view>
+    </TopUser>
 
 
-<view>
-  <TopUser class="TopUser">
-    <open-data type="userAvatarUrl" class="avatar" />
-    <open-data type="userNickName" class="username" />
-  </TopUser>
+
+    <view class="action">
+        <view bindtap="GoSendPost">
+            <view class="iconfont icon-fabu"/>
+            <text>发布帖子</text>
+        </view>
+        <view>
+            <view class="iconfont icon-fabu"/>
+            <text>发布帖子</text>
+        </view>
+        <view>
+            <view class="iconfont icon-fabu"/>
+            <text>发布帖子</text>
+        </view>
+    </view>
 </view>

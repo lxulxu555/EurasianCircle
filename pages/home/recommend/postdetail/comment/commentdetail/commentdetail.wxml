@@ -36,6 +36,11 @@
                     </view>
                 </view>
                 <view style="flex: 1"/>
+                <DeleteComment
+                        wx:if="{{UserId === node.user.id}}"
+                        comment="{{node}}"
+                        bind:UpdateGrandrNewComment="onPullDown"
+                />
                 <like
                         class="iconfont icon-dianzan"
                         bindtap="like"

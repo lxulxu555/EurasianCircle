@@ -19,3 +19,28 @@
   color: #FFFFFF;
 }
 
+.action{
+  display: flex;
+  flex-direction: row;
+  margin : 20px 10px 20px 10px;
+  background-color: #FFFFFF;
+  border-radius: 15px;
+}
+
+
+.action view{
+  flex:1;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0 5px 0;
+}
+
+.TopUser text{
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  padding:0 10px 0 10px;
+  margin: 10px;
+  font-size: 13px;
+}
+

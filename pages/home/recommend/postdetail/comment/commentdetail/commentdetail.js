@@ -6,7 +6,7 @@ Page({
         CommentList: {},
         height: '',
         ReplyList: [],
-        UserId:util.getUserInfo().user.id
+        UserId:""
     },
 
     getCommentList: function () {
@@ -64,8 +64,12 @@ Page({
 
     onLoad: function () {
         this.getCommentList()
+        const UserId = util.getUserInfo().user.id
         this.setData({
             height: wx.getSystemInfoSync().windowHeight,
+            UserId
         })
     },
+
+
 })

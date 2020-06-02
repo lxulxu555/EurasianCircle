@@ -8,12 +8,21 @@ Component({
         initData: []
     },
 
+    /*onPullDownRefresh : () =>{
+        wx.showNavigationBarLoading()//在标题栏中显示加载
+        this.attached()
+        //模拟加载
+        setTimeout(function(){
+            wx.hideNavigationBarLoading()//完成停止加载
+            wx.stopPullDownRefresh()//停止下拉刷新
+        },1500)
+    },*/
+
 
     methods: {
         // 这里是一个自定义方法
         OneClass: function () {
             api._get('/user/init').then(res => {
-                console.log(res)
                 this.setData({
                     initData: res.data
                 })
@@ -25,23 +34,28 @@ Component({
         GoPostDetail: function (e) {
             wx.navigateTo({
                 url: './recommend/postdetail/postdetail',
-                success: function(res) {
+                success: function (res) {
                     // 通过eventChannel向被打开页面传送数据
                     res.eventChannel.emit('GetId', e.currentTarget.dataset.postid)
                 }
             })
         },
 
-        GoOneClassDetail: function () {
+        GoOneClassDetail: function (e) {
             wx.navigateTo({
                 url: './recommend/oneclassdetail/oneclassdetail',
+                success: function (res) {
+                    const type = e.currentTarget.dataset.type
+                    // 通过eventChannel向被打开页面传送数据
+                    res.eventChannel.emit('GetId', {id: e.currentTarget.dataset.id, type: type})
+                }
             })
-        }
+        },
 
-    },
+},
 
-    attached: function () {
-        this.OneClass()
+attached: function () {
+    this.OneClass()
     }
 })
 

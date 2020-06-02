@@ -2,53 +2,50 @@ const api = require('../../../../api/ajax.js')
 const App = getApp();
 Page({
     data: {
-        navH : '',
-        PostDetail : {},
-        images : [],
-        PostId : ''
+        navH: '',
+        PostDetail: {},
+        images: [],
+        commentList: []
     },
 
-    a :function(){
-      this.onLoad()
-    },
 
-    getId : function(){
+    getPostDetail: function () {
         // 监听acceptDataFromOpenerPage事件，获取UpdateComment上一页面通过eventChannel传送到当前页面的数据
         const eventChannel = this.getOpenerEventChannel()
         eventChannel.on('GetId', (data) => {
-                this.setData({
-                    PostId : data
-                })
-            })
-    },
-
-    getPostDetail: function () {
-        // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
-            api._get('/post/' + this.data.PostId).then(res =>{
+            api._get('/post/' + data).then(res => {
                 /*切割字符串*/
                 const images = res.data.imagesUrl.split(",")
                 this.setData({
-                    PostDetail : res.data,
+                    PostDetail: res.data,
+                    commentList:res.data.commentList,
                     images
                 })
             })
-    },
-
-    GetHeight: function(e){
-        this.setData({
-            navH : e.detail.navH
         })
     },
 
-    onLoad: function () {
-        this.getId()
+    UpdateCommentDetail: function () {
+        const postId = this.data.PostDetail.id
+        const sortName = 'number'
+        api._get('/comment/findBySort/',{postId,sortName}).then(res => {
+            this.setData({
+                commentList: res.data,
+            })
+        })
     },
 
-    onReady : function(){
+    GetHeight: function (e) {
+        this.setData({
+            navH: e.detail.navH
+        })
+    },
+
+    onReady: function () {
         this.getPostDetail()
     },
 
-    LookImages : function (e) {
+    LookImages: function (e) {
         wx.previewImage({
             current: e.currentTarget.dataset.image, // 当前显示图片的http链接
             urls: e.currentTarget.dataset.images // 需要预览的图片http链接列表

@@ -7,7 +7,7 @@
 
 <!--分类-->
 <view class="OneRowFlex">
-    <view wx:for="{{initData.classifyList}}" class="OneColumnFlex"  bindtap='GoOneClassDetail' wx:key="*this">
+    <view wx:for="{{initData.classifyList}}" class="OneColumnFlex"  bindtap='GoOneClassDetail' data-id="{{item.id}}" wx:key="*this" data-type="class">
         <image src="{{item.classifyUrl}}" class="OneClassImage"/>
         <text class="OneClassTitle">{{item.name}}</text>
     </view>
@@ -16,7 +16,7 @@
 <view class="Hot">
     <text >热门话题</text>
     <view class="HotDetail">
-        <view wx:for="{{initData.matterList}}" style="width: 50%" wx:key="*this">
+        <view wx:for="{{initData.matterList}}" style="width: 50%" wx:key="*this" bindtap='GoOneClassDetail' data-id="{{item.id}}" >
             <image src="{{item.matterUrl}}"></image>
             <detail>
                 <text class="line-limit-length">{{item.name}}</text>
