@@ -17,9 +17,28 @@ Page({
       url:"./myuser/myuser",
       success: (res) => {
         const id = this.data.user.user.id
+        const type = "MyUser"
         // 通过eventChannel向被打开页面传送数据
-        res.eventChannel.emit('GetId',id)
+        res.eventChannel.emit('GetId',{id: id, type: type})
       }
+    })
+  },
+
+  GoAttention : function(e){
+    const type = e.currentTarget.dataset.type
+    const id = this.data.user.user.id
+    wx.navigateTo({
+      url: './fans/fans',
+      success: function (res) {
+        // 通过eventChannel向被打开页面传送数据
+        res.eventChannel.emit('GetId', {id : id,type:type})
+      }
+    })
+  },
+
+  Complaint:function(){
+    wx.navigateTo({
+      url: './complaint/complaint',
     })
   },
 

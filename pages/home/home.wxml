@@ -24,10 +24,6 @@
     <text>推荐</text>
     <hr class="line-style" />
   </view>
-  <view class="{{2 == currentIndex ? 'title-sel-selected' : 'title-sel'}}" bindtap='titleClick' data-idx='2'>
-    <text>资讯</text>
-    <hr class="line-style" />
-  </view>
 </view>
 
 <!--滑动切换 tab-->
@@ -36,7 +32,7 @@
 
     <swiper-item>
       <scroll-view class="scroll" scroll-y wx:if="{{currentIndex == 0}}">
-        <text>你好111</text>
+       <attention/>
       </scroll-view>
     </swiper-item>
 
@@ -46,11 +42,6 @@
       </scroll-view>
     </swiper-item>
 
-    <swiper-item>
-      <scroll-view class="scroll" scroll-y wx:if="{{currentIndex == 2}}">
-        <view class="tip">第3个tab</view>
-      </scroll-view>
-    </swiper-item>
   </swiper>
 </view>
 </view>

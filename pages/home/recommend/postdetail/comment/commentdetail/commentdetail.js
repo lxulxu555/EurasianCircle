@@ -37,6 +37,17 @@ Page({
         }, 2000);
     },
 
+    GoMyUser:function(e){
+        wx.navigateTo({
+            url:"/pages/user/myuser/myuser",
+            success: (res) => {
+                const id = e.currentTarget.dataset.userid
+                // 通过eventChannel向被打开页面传送数据
+                res.eventChannel.emit('GetId',{id: id})
+            }
+        })
+    },
+
     like: function (e) {
         const detail = e.currentTarget.dataset.like
         const ReplyList = this.data.ReplyList

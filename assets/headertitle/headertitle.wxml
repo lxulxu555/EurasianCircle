@@ -6,6 +6,5 @@
     </view>
     <view class='title_text'>
         <image src="{{UserInfo.avatarUrl}}" style="width: 30px;height: 30px;border-radius: 15px;vertical-align: middle;"/>
-        {{UserInfo.nickName}}
     </view>
 </view>

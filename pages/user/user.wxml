@@ -10,17 +10,23 @@
 
 
     <view class="action">
-        <view bindtap="GoSendPost">
+        <action bindtap="GoSendPost">
             <view class="iconfont icon-fabu"/>
             <text>发布帖子</text>
-        </view>
-        <view>
-            <view class="iconfont icon-fabu"/>
-            <text>发布帖子</text>
-        </view>
-        <view>
-            <view class="iconfont icon-fabu"/>
-            <text>发布帖子</text>
-        </view>
+        </action>
+        <action bindtap="GoAttention" data-type="attention">
+            <view class="iconfont icon-guanzhu" style="font-size: 35px; color: red;"/>
+            <text>我的关注</text>
+        </action>
+        <action bindtap="GoAttention">
+            <view class="iconfont icon-fensipa" style="font-size: 35px; color: red;"/>
+            <text>我的粉丝</text>
+        </action>
+        <action bindtap="Complaint">
+            <view class="iconfont icon-tousu" style="font-size: 35px; color: red;"/>
+            <text>投诉反馈</text>
+        </action>
     </view>
+
+
 </view>

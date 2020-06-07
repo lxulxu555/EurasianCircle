@@ -6,32 +6,27 @@
                 bind:searchDetail="selectResult"
         />
     </form>
-    <view style="background-color: #ffffff;margin-top: 2px;padding:5px 20px 0 20px" wx:for="{{ClassList}}" wx:key="*this">
+    <view style="background-color: #ffffff;margin-top: 2px;padding:5px 20px 0 20px" wx:for="{{ClassList}}" wx:key="*this" bindtap="GoPostDetail" data-postid="{{item.id}}">
         <user class="user">
             <image src="{{item.user.avatarUrl}}" class="avatar"/>
             <text class="title">{{item.user.nickName}}</text>
         </user>
         <detail>
-            {{item.content}}
+            {{item.title}}
         </detail>
-        <scroll-view scroll-x>
-            <imagewall style="flex-direction: row;display: flex">
-                <!--图片描述-->
-                <view wx:for="{{images}}" wx:key="*this">
-                    <image src="{{item}}" class="imagewall" bindtap="LookImages"
-                           data-images="{{images}}" data-image="{{item}}"></image>
-                </view>
-            </imagewall>
-        </scroll-view>
+        <ImageWall images="{{item.imagesUrl}}"/>
         <bottom style="flex-direction: row;display: flex;align-items: center">
-            <button open-type="share" class="iconfont icon-share">123</button>
-            <view class="iconfont icon-pinglun">101</view>
+            <button open-type="share" class="iconfont icon-liulan">{{item.views}}</button>
+            <view class="iconfont icon-pinglun">{{item.commentNum}}</view>
             <view style="flex: 1"/>
             <view
                     class="iconfont icon-dianzan"
             >
-                12
+                {{item.number}}
             </view>
         </bottom>
+    </view>
+    <view wx:if="{{type !== 'class'}}" class="actionbutton" bindtap="AddHotPost">
+        <view class="iconfont icon-fabu"/>
     </view>
 </scroll-view>

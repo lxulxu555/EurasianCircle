@@ -15,9 +15,16 @@
     font-size: 20px;
 }
 
-.bg-gray image {
+.detail-image {
     width: 100%;
     margin-top: 10px;
+}
+.fans-button{
+    background-color: #36B7AB;
+    color: #FFFFFF;
+    line-height: 30px;
+    margin-top: 5px;
+    margin-left: 10px;
 }
 
 

@@ -3,8 +3,10 @@ Page({
     data: {
         navH: '',
         search: '',
-        images: ['https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=595770973,897086183&fm=26&gp=0.jpg', 'http://img5.imgtn.bdimg.com/it/u=2969407735,1014016186&fm=26&gp=0.jpg', 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=595770973,897086183&fm=26&gp=0.jpg', 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=595770973,897086183&fm=26&gp=0.jpg'],
-        ClassList: []
+        ClassList: [],
+        IdData:{},
+        type:'',
+        matterId:''
     },
 
     GetHeight: function (e) {
@@ -13,35 +15,65 @@ Page({
         })
     },
 
+    AddHotPost : function(){
+        const matterId = this.data.matterId
+        wx.navigateTo({
+            url: '/pages/user/sendpost/sendpost',
+            success: function (res) {
+                // 通过eventChannel向被打开页面传送数据
+                res.eventChannel.emit('GetId', {matterId: matterId,type:'Hotmatter'})
+            }
+        })
+    },
+
     GetClassId: function () {
         const eventChannel = this.getOpenerEventChannel()
         eventChannel.on('GetId', (data) => {
-            const type = data.type
-            const id  = data.id
-            const classifyId = id
-            const matterId = id
-            api._get("/post/findByClassifyOrMatter",
-                type === 'class'? {classifyId} : {matterId}).then(res => {
-                this.setData({
-                    ClassList: res.data.data
-                })
+            this.setData({
+                IdData :data
             })
+
+        })
+    },
+
+    GetClassList:function(searchName){
+        const data = this.data.IdData
+        const type = data.type
+        const id  = data.id
+        const classifyId = id
+        const matterId = id
+        api._get("/post/findByClassifyOrMatter",
+            type === 'class'? {classifyId,searchName} : {matterId,searchName}).then(res => {
+            this.setData({
+                ClassList: res.data.data,
+                type:type,
+                matterId:matterId
+            })
+
         })
     },
 
 
     selectResult: function (e) {
-        console.log(e.detail)
+        const searchName = e.detail
+        this.GetClassList(searchName)
     },
 
-    LookImages: function (e) {
-        wx.previewImage({
-            current: e.currentTarget.dataset.image, // 当前显示图片的http链接
-            urls: e.currentTarget.dataset.images // 需要预览的图片http链接列表
+    GoPostDetail : function(e){
+        wx.navigateTo({
+            url: '../postdetail/postdetail',
+            success: function (res) {
+                // 通过eventChannel向被打开页面传送数据
+                res.eventChannel.emit('GetId', e.currentTarget.dataset.postid)
+            }
         })
     },
 
+
     onLoad: function () {
         this.GetClassId()
+        setTimeout(() => {
+            this.GetClassList('')
+        },100)
     }
 })

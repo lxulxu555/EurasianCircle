@@ -1,3 +1,7 @@
+<scroll-view
+        scroll-y
+        style="height: 100%"
+>
 <!--推荐轮播图-->
 <swiper class='lunbo' indicator-dots='true' autoplay='true' interval='4000' circular="true">
     <swiper-item  wx:for="{{initData.carouselList}}" wx:key="*this">
@@ -38,3 +42,4 @@
         <line/>
     </view>
 </view>
+</scroll-view>

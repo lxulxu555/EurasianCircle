@@ -5,7 +5,8 @@ Page({
         navH: '',
         PostDetail: {},
         images: [],
-        commentList: []
+        commentList: [],
+        follow:''
     },
 
 
@@ -20,7 +21,38 @@ Page({
                     PostDetail: res.data,
                     commentList:res.data.commentList,
                     images
+                },() => {
+                    this.JudgeFollow()
                 })
+            })
+        })
+    },
+
+    GoMyUser:function(){
+        wx.navigateTo({
+            url:"/pages/user/myuser/myuser",
+            success: (res) => {
+                const id = this.data.PostDetail.user.id
+                // 通过eventChannel向被打开页面传送数据
+                res.eventChannel.emit('GetId',{id: id})
+            }
+        })
+    },
+
+    follow : function(){
+        const userId = this.data.PostDetail.user.id
+        api._post("/fans/save",{userId : userId}).then(res => {
+            this.setData({
+                follow : res.msg === '收藏成功' ? '取消关注' : '关注'
+            })
+        })
+    },
+
+    JudgeFollow : function(){
+        const toUserId =  this.data.PostDetail.user.id
+        api._get("/fans/checkFans",{toUserId}).then(res => {
+            this.setData({
+                follow : res === true ? '取消关注' : '关注'
             })
         })
     },

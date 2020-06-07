@@ -43,13 +43,24 @@ Component({
             })
         },
 
-        likeComment : function(){
+        likePost : function(){
             const type = "post:" + this.properties.postId
             const state = this.data.color === 'black' ? '1' : '0'
             api._post("/praise",{type,state}).then(res => {
                 this.setData({
                     color : state === '0' ? 'black' : 'red'
                 })
+            })
+        },
+
+        GoMyUser:function(e){
+            wx.navigateTo({
+                url:"/pages/user/myuser/myuser",
+                success: (res) => {
+                    const id = e.currentTarget.dataset.userid
+                    // 通过eventChannel向被打开页面传送数据
+                    res.eventChannel.emit('GetId',{id: id})
+                }
             })
         },
 
@@ -63,15 +74,15 @@ Component({
             this.setData({ShowInput: false})
         },
 
-        GoToCommentDetail: function (e) {
-            wx.navigateTo({
-                url: './comment/commentdetail/commentdetail',
-                success: (res) => {
-                    // 通过eventChannel向被打开页面传送数据
-                    res.eventChannel.emit('CommentList', e.currentTarget.dataset.comment)
-                }
-            })
-        },
+            GoToCommentDetail: function (e) {
+                wx.navigateTo({
+                    url: './comment/commentdetail/commentdetail',
+                    success: (res) => {
+                        // 通过eventChannel向被打开页面传送数据
+                        res.eventChannel.emit('CommentList', e.currentTarget.dataset.comment)
+                    }
+                })
+            },
 
 
         ClickSort: function () {

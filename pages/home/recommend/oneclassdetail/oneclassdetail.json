@@ -2,6 +2,7 @@
   "navigationStyle": "custom",
   "usingComponents": {
     "Header": "/assets/headertitle/headertitle",
-    "mp-searchbar": "/miniprogram_npm/weui-miniprogram/searchbar/searchbar"
+    "mp-searchbar": "/miniprogram_npm/weui-miniprogram/searchbar/searchbar",
+    "ImageWall" :"./image/image"
   }
 }

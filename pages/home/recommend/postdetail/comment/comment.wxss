@@ -49,7 +49,9 @@
     margin-top: 5px;
     margin-left: 5px;
 }
-
+.content{
+    word-break:break-all
+}
 
 
 button::after{ border: none; }

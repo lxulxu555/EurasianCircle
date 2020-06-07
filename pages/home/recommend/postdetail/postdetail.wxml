@@ -8,18 +8,19 @@
                 {{PostDetail.title}}
             </title>
         </view>
-        <view style="flex-direction: row;align-items: center;display: flex">
+        <view style="flex-direction: row;align-items: center;display: flex" bindtap="GoMyUser">
             <image src="{{PostDetail.user.avatarUrl}}"
                    style="width: 40px;height: 40px;border-radius: 50rpx"></image>
             <text style="color:gray;margin-left: 15px">{{PostDetail.user.nickName}}</text>
+            <button catchtap="follow" class="fans-button">{{follow}}</button>
         </view>
         <view style="margin-top: -20px">
             <text style="line-height: 2;font-size: 18px">
                 {{PostDetail.content}}
             </text>
         </view>
-        <image src="{{item}}" bindtap="LookImages" wx:for="{{images}}" wx:key="*this"
-               data-images="{{images}}" data-image="{{item}}"></image>
+        <image mode="widthFix" src="{{item}}" bindtap="LookImages" wx:for="{{images}}" wx:key="*this"
+               data-images="{{images}}" data-image="{{item}}" class="detail-image"/>
 
         <!--留言评论组件-->
             <Comment

@@ -14,24 +14,18 @@ Page({
     isGetSetting: function () {
         let that = this
         //获取用户的当前设置
-            wx.getSetting({
+        wx.getSetting({
             success: function (res) {
                 if (res.authSetting['scope.userInfo']) {
                     // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-                    wx.checkSession({
-                        success () {
-                            console.log('//session_key 未过期，并且在本生命周期一直有效\n')
-                            that.setData({isHide:false})
-                        },
-                        fail () {
-                            wx.getUserInfo({
-                                success: function (res) {
-                                    const UserInfo = JSON.parse(res.rawData)
-                                    that.login(UserInfo)
-                                }
-                            });
+                    // console.log('//session_key 未过期，并且在本生命周期一直有效\n')
+                    //that.setData({isHide:false})
+                    wx.getUserInfo({
+                        success: function (res) {
+                            const UserInfo = JSON.parse(res.rawData)
+                            that.login(UserInfo)
                         }
-                    })
+                    });
                 } else {
                     that.setData({
                         isHide: true
@@ -69,7 +63,7 @@ Page({
                     wx.setStorage({
                         key: "User",
                         data: res.data,
-                        success : (res) =>{
+                        success: (res) => {
                             this.setData({
                                 isHide: false
                             });
