@@ -42,11 +42,12 @@ Page({
     })
   },
 
+
   onLoad:function () {
     const user = utils.getUserInfo()
     this.setData({
       height: wx.getSystemInfoSync().windowHeight,
       user
     })
-  }
+  },
 })

@@ -8,7 +8,7 @@ Page({
     data: {
         currentIndex: 1,
         ch: 0,
-        isHide: ''
+        isHide: '',
     },
 
     isGetSetting: function () {
@@ -115,5 +115,23 @@ Page({
             });
         }
     },
+
+    getNoReady : function(){
+        api._get("/user").then(res => {
+            const {comment,fans,praise} = res.data
+            const num = comment + fans + praise
+            const numbernews = num.toString()
+            if(num !== 0){
+                wx.setTabBarBadge({
+                    index: 1,
+                    text: numbernews
+                })
+            }
+        })
+    },
+
+    onShow:function () {
+        this.getNoReady()
+    }
 })
 

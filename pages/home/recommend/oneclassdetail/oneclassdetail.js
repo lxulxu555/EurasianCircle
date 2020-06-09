@@ -31,6 +31,8 @@ Page({
         eventChannel.on('GetId', (data) => {
             this.setData({
                 IdData :data
+            },() => {
+              this.GetClassList('')
             })
 
         })
@@ -72,8 +74,5 @@ Page({
 
     onLoad: function () {
         this.GetClassId()
-        setTimeout(() => {
-            this.GetClassList('')
-        },100)
     }
 })

@@ -26,7 +26,10 @@
             </view>
         </bottom>
     </view>
-    <view wx:if="{{type !== 'class'}}" class="actionbutton" bindtap="AddHotPost">
-        <view class="iconfont icon-fabu"/>
-    </view>
+
+
 </scroll-view>
+
+<view wx:if="{{type !== 'class'}}" class="actionbutton" bindtap="AddHotPost">
+    <view class="iconfont icon-fabu"/>
+</view>
