@@ -1,0 +1,9 @@
+<scroll-view scroll-x>
+    <imagewall style="flex-direction: row;display: flex">
+        <!--图片描述-->
+        <view wx:for="{{imageArr}}" wx:key="*this">
+            <image src="{{item}}" class="imagewall" catchtap="LookImages"
+                   data-images="{{imageArr}}" data-image="{{item}}"></image>
+        </view>
+    </imagewall>
+</scroll-view>

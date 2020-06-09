@@ -1,0 +1,7 @@
+<scroll-view class="bg-gray" scroll-y  style="height: {{height}}px">
+    <view class="bg" wx:for="{{data}}" bindtap="GoMyUser" data-id="{{item.user.id}}">
+        <image src="{{item.user.avatarUrl}}"/>
+        <text>{{item.user.nickName}}</text>
+        <view style="flex:1"/>
+    </view>
+</scroll-view>

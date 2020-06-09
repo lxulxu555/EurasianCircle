@@ -1,0 +1,33 @@
+<top class="top">
+    <view>
+        <back class="iconfont icon-fanhui" bindtap="back"/>
+        <image src="{{user.user.avatarUrl}}" class="bg"/>
+        <view class="user">
+            <image src="{{user.user.avatarUrl}}"/>
+            <text>{{user.user.nickName}}</text>
+            <view wx:if="{{type === true}}">
+                <text bindtap="GoAttention" data-type="attention">关注:<text>{{user.fans.attention}}</text></text>
+                <text bindtap="GoAttention">粉丝:<text>{{user.fans.fans}}</text></text>
+            </view>
+            <button wx:if="{{type === true}}" bindtap="follow">{{follow}}</button>
+        </view>
+    </view>
+</top>
+
+<view class="bottom" wx:for="{{user.postList}}" wx:key="*this" bindtap="GoPostDetail" data-postid="{{item.id}}">
+    <detail>
+        {{item.title}}
+    </detail>
+    <view style="color:gray;margin:5px 0 5px 0 ">{{item.createTime}}</view>
+    <ImageWall images="{{item.imagesUrl}}"/>
+    <bottom style="flex-direction: row;display: flex;align-items: center">
+        <button open-type="share" class="iconfont icon-liulan">{{item.views}}</button>
+        <view class="iconfont icon-pinglun">{{item.commentNum}}</view>
+        <view style="flex: 1"/>
+        <view
+                class="iconfont icon-dianzan"
+        >
+            {{item.number}}
+        </view>
+    </bottom>
+</view>

@@ -1,0 +1,21 @@
+<view wx:if="{{type === 'fans'}}" wx:for="{{data}}" class='detail' bindtap="GoMyUser" data-userid="{{item.user.id}}">
+    <image src="{{item.user.avatarUrl}}" class="image"/>
+    <text class="text">{{item.user.nickName}}<text style="font-weight: bold">关注</text>了我</text>
+    <view style="flex: 1"/>
+    <image src="{{item.images}}" class="postImage"/>
+</view>
+
+<view wx:if="{{type === 'praise'}}" wx:for="{{data}}"
+      class="{{item.type === 'comment' ? 'detail-comment' : 'detail'}}"
+      bindtap="GoPost" data-postid="{{item.postId}}">
+    <image src="{{item.user.avatarUrl}}" class="image"/>
+    <view wx:if="{{item.type === 'comment'}}" class="comment">
+        <text>{{item.user.nickName}}<text style="font-weight: bold;margin: 5px">点赞</text>了我的留言</text>
+        <content>{{item.content}}</content>
+        <title>{{item.name}}</title>
+        <time>{{item.createTime}}</time>
+    </view>
+    <text class="text" wx:if="{{item.type === 'post'}}">{{item.user.nickName}}<text style="font-weight: bold">点赞</text>了我的帖子</text>
+    <view style="flex: 1"/>
+    <image  wx:if="{{item.type === 'post'}}" src="{{item.images}}" class="postImage"/>
+</view>

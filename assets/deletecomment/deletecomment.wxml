@@ -1,0 +1,6 @@
+<view>
+<delete class="iconfont icon-shanchu" bindtap="ShowConfirm"/>
+
+<mp-dialog title="确认删除留言？" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}">
+</mp-dialog>
+</view>

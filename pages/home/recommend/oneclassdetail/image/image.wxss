@@ -1,0 +1,5 @@
+.imagewall{
+    height: 120px;
+    width: 150px;
+    margin: 5px 10px 0 0;
+}

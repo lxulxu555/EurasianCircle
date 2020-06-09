@@ -1,0 +1,48 @@
+.line{
+    border: solid 2px rgb(238,240,244);
+}
+.comment{
+    display: flex;
+    flex-direction: row;
+    border-bottom:solid thin #a3a3a3;
+    padding:10px
+}
+.comment text{
+    font-size: 13px;
+}
+.comment view{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+.comment view content{
+    font-size: 18px;
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.comment view title{
+    margin-top: 10px;
+    font-size: 18px;
+    color:#a3a3a3;
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.comment view time{
+    font-size: 13px;
+    color: #a3a3a3;
+    margin-top: 5px;
+}
+.image{
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+}
+.postImage{
+    width: 65px;
+    height: 65px;
+}
+

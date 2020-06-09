@@ -1,0 +1,24 @@
+<view>
+    <mp-cells>
+        <mp-cell link bindtap="GoNewsType" data-type="fans">
+            <view style="display: inline-block; vertical-align: middle">关注我的</view>
+            <mp-badge style="margin-left: 5px;" content="{{news.fans}}" wx:if="{{news.fans > 0}}"/>
+        </mp-cell>
+        <mp-cell link bindtap="GoNewsType" data-type="praise">
+            <view style="display: inline-block; vertical-align: middle">点赞我的</view>
+            <mp-badge style="margin-left: 5px;" content="{{news.praise}}" wx:if="{{news.praise > 0}}"/>
+        </mp-cell>
+    </mp-cells>
+    <view class="line"/>
+    <view wx:for="{{comment}}" class='comment' bindtap="GoPost" data-postid="{{item.postId}}">
+        <image src="{{item.user.avatarUrl}}" class="image"/>
+        <view>
+            <text>{{item.user.nickName}}</text>
+            <content>{{item.content}}</content>
+            <title>{{item.name}}</title>
+            <time>{{item.createTime}}</time>
+        </view>
+        <view style="flex: 1"/>
+        <image src="{{item.images}}" class="postImage"/>
+    </view>
+</view>

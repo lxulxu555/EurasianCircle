@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "ImageWall" : "../../home/recommend/oneclassdetail/image/image"
+  },
+  "navigationStyle": "custom"
+
+}

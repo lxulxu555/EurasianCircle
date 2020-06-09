@@ -1,0 +1,23 @@
+<scroll-view class='bg-gray' scroll-y>
+    <view style="background-color: #ffffff;margin-top: 2px;padding:5px 20px 0 20px" wx:for="{{data}}" wx:key="*this" bindtap="GoPostDetail" data-postid="{{item.id}}">
+        <user class="user">
+            <image src="{{item.user.avatarUrl}}" class="avatar"/>
+            <text class="title">{{item.user.nickName}}</text>
+        </user>
+        <detail>
+            {{item.title}}
+        </detail>
+        <ImageWall images="{{item.imagesUrl}}"/>
+        <bottom style="flex-direction: row;display: flex;align-items: center">
+            <button open-type="share" class="iconfont icon-liulan">{{item.views}}</button>
+            <view class="iconfont icon-pinglun">{{item.commentNum}}</view>
+            <view style="flex: 1"/>
+            <view
+                    class="iconfont icon-dianzan"
+            >
+                {{item.number}}
+            </view>
+        </bottom>
+    </view>
+</scroll-view>
+
